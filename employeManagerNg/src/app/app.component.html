@@ -7,7 +7,12 @@
 	<div class="collapse navbar-collapse" id="navbarColor02">
 	   <ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
-			 <a class="nav-link">Add Employee <span class="sr-only">(current)</span></a>
+			  <!-- button to add an employe -->
+			  <!-- we will add onOpenModal button & call it over a click listener & pass in employee,
+				as this is open modal, we do not have employee cause we want to add, so mode is also add-->
+			 <a class="nav-link ">Add Employee <span class="sr-only"></span></a>
+			 <!--	problem in using null
+				  <a class="nav-link " (click)= "onOpenModal( null ,'add')">Add Employee <span class="sr-only">(current)</span></a> -->
 		  </li>
 	   </ul>
 	   <form class="form-inline my-2 my-lg-0">
@@ -15,12 +20,15 @@
 	   </form>
 	</div>
   </nav>
+  <!-- this is main div of page, here we add the modal buttons -->
   <div class="container" id="main-container">
   <div class="row">
+	<!-- list of all employee with cards starts -->
 	<div *ngFor= "let employee of employees" class="col-md-6 col-xl-3">
 	   <div class="card m-b-30">
 		  <div class="card-body row">
 			 <div class="col-6">
+				 <!-- for every employee we have info on employee in currentiteration  -->
 				<a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
 			 </div>
 			 <div class="col-6 card-title align-self-center mb-0">
@@ -33,11 +41,14 @@
 			 <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li>
 		  </ul>
 		  <div class="card-body">
+			  <!-- next 3 lines button with pencil icon image has 2 buttons, edit & delete employee-->
 			 <div class="float-right btn-group btn-group-sm">
-				<a class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-				<a class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+				<a (click)= "onOpenModal(employee,'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+				<a (click)= "onOpenModal(employee,'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+				<!-- we can create a function that can understand which modal to open based on passed parameters on click -->
 			 </div>
 		  </div>
+		  <!-- list of all employee with cards ends -->
 	   </div>
 	</div>
   </div>
@@ -150,7 +161,7 @@
   </div>
   </div>
   
-  <!-- Notification for no employees -->
+  <!-- Notification for no employees when no employees to show-->
   <div class="col-lg-12 col-md-12 col-xl-12">
   <div class="alert alert-info" role="alert">
 	<h4 class="alert-heading">NO EMPLOYEES!</h4>
