@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 
@@ -27,6 +28,12 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  /* onAddEmployee function will work here */
+  public onAddEmployee(addForm: NgForm): void {
+    
+  }
+
 
   /* this modal we pass tells what user trying to do, add delete etc,
    to know which modal to open, returns void, has b */
